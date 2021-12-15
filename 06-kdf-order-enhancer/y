@@ -1,0 +1,13 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "kdf-order-enhancer"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-as8w3ao6uokq"
+s3_prefix = "kdf-order-enhancer"
+region = "ap-south-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+disable_rollback = true
+parameter_overrides = "KinesisStreamName=\"order-in-data-stream\""
+image_repositories = []
