@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: kinesis-producer
+  twitter:
+    access:
+      url: https://api.twitter.com/2/tweets/search/recent?query=to
+      token: Bearer AAAAAAAAAAAAAAAAAAAAAF%2FKWwEAAAAA7%2BuTkJxyONiGVcOOQU8Xlpm%2BQ8I%3DWJrVpgfJd05Ffpfnoxq4TjFiohULerjyStlKMlZRI60ipMQ5jf  
+  cloud:
+    stream:   
+      bindings:
+        output:
+          destination: twitter-in-data-stream
+          content-type: text/plain
+      
+
+cloud:
+  aws:
+    credentials:
+      accessKey: KEY
+      secretKey: secretkey
+    region:
+      static: ap-south-1
+    stack:
+      auto: false
+

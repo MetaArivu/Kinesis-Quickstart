@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: kinesis-producer
+
+
+cloud:
+  aws:
+    inputstreamname: order-in-data-stream
+    credentials:
+      accessKey: KEY
+      secretKey: SECRRET
+    region: ap-south-1
+    stack:
+      auto: false
+

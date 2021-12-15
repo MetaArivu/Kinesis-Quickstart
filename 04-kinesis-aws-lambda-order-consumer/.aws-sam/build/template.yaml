@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: '04-kinesis-aws-lambda-order-consumer
+
+  Sample SAM Template for sam-java-app
+
+  '
+Parameters:
+  KinesisStreamName:
+    Type: String
+Resources:
+  KinesisOrdersStream:
+    Type: AWS::Kinesis::Stream
+    Properties:
+      Name:
+        Ref: KinesisStreamName
+      ShardCount: 2
+  OrdersConsumerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: OrdersConsumerFunction
+      Handler: com.metaarivu.OrdersConsumer::handleRequest
+      Runtime: java8
+      Timeout: 30
+      MemorySize: 256
+      Events:
+        StreamRecordsBatch:
+          Type: Kinesis
+          Properties:
+            Stream:
+              Fn::GetAtt:
+              - KinesisOrdersStream
+              - Arn
+            BatchSize: 20
+            MaximumBatchingWindowInSeconds: 45
+            StartingPosition: TRIM_HORIZON
+            MaximumRetryAttempts: 3
+            Enabled: true
+            BisectBatchOnFunctionError: true

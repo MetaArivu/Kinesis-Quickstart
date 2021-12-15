@@ -1,0 +1,19 @@
+
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: twitter-in-data-stream
+          group: twitter-in-data-stream-group
+          content-type: text/plain
+
+cloud:
+  aws:
+    credentials:
+      accessKey: KEY
+      secretKey: SECRET
+    region:
+      static: ap-south-1
+    stack:
+      auto: false
