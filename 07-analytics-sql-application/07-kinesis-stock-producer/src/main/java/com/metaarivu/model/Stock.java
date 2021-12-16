@@ -59,10 +59,12 @@ public class Stock {
 		return dateTime;
 	}
 
+	@JsonIgnore
 	public int getMinPrice() {
 		return minPrice;
 	}
 
+	@JsonIgnore
 	public int getMaxPrice() {
 		return maxPrice;
 	}

@@ -1,0 +1,19 @@
+
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: stock-window-data-stream
+          group: stock-window-data-stream-group
+          content-type: text/plain
+
+cloud:
+  aws:
+    credentials:
+      accessKey: 
+      secretKey: 
+    region:
+      static: ap-south-1
+    stack:
+      auto: false

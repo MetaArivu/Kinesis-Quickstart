@@ -35,18 +35,18 @@ public class StockService {
 
 				PutRecordRequest putRecordRequest = new PutRecordRequest();
 				putRecordRequest.setStreamName(config.getInputstreamname());
-				putRecordRequest.setPartitionKey(stock.getStockId());
+				putRecordRequest.setPartitionKey(stock.getStockCode());
 
 				String key = StockData.getInstance().get(stock.getStockId());
 
 				if (key != null) {
-					putRecordRequest.setSequenceNumberForOrdering(stock.getStockId());
+					//putRecordRequest.setSequenceNumberForOrdering(stock.getStockId());
 				}
 				putRecordRequest.withData(ByteBuffer.wrap(event.getBytes()));
 
 				PutRecordResult putRecordResult = amazonKinesis.putRecord(putRecordRequest);
 
-				StockData.getInstance().put(key, stock.getStockId());
+				//StockData.getInstance().put(key, stock.getStockId());
 
 				log.info("SQNO=" + putRecordResult.getSequenceNumber()+" Data="+event);
 
@@ -59,7 +59,7 @@ public class StockService {
 
 	}
 
-	@Scheduled(fixedRate = 2000L)
+	@Scheduled(fixedRate = 5000L)
 	public void generateData() {
 		System.out.println();
 		log.info("-------------------Producing Stock Data-------------------");
