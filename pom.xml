@@ -12,7 +12,7 @@
 		<module>01-kinesis-producer</module>
 		<module>02-kinesis-consumer</module>
 		<module>03-kinesis-order-producer</module>
-		<module>04-kinesis-aws-lambda-order-consumer</module>
+		<module>07-kinesis-stock-producer</module>
 	</modules>
 
 	<name>kinesis-quickstart</name>

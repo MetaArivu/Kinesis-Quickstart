@@ -11,6 +11,7 @@ import com.amazonaws.services.lambda.runtime.events.KinesisAnalyticsInputPreproc
 import com.amazonaws.services.lambda.runtime.events.KinesisFirehoseEvent;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.metaarivu.model.Order;
+
 public class OrdersEnhancerConsumer {
 
 	public KinesisAnalyticsInputPreprocessingResponse transformRecords(KinesisFirehoseEvent event, Context context) {
@@ -57,26 +58,5 @@ public class OrdersEnhancerConsumer {
 		return response;
 	}
 
-	public KinesisAnalyticsInputPreprocessingResponse.Record transformRecord(KinesisFirehoseEvent.Record rec) {
-		return null;
-//		StreamSource input = new StreamSource(new ByteArrayInputStream(inputRecord.getData().array()));
-//
-//		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//		Serializer output = getProcessor().newSerializer(baos);
-//
-//		Record record = new Record();
-//		record.setRecordId(inputRecord.getRecordId());
-//		try {
-//			getTransformer().transform(input, output);
-//
-//			record.setData(ByteBuffer.wrap(baos.toByteArray()));
-//			record.setResult(KinesisAnalyticsInputPreprocessingResponse.Result.Ok);
-//			return record;
-//		} catch (SaxonApiException ex) {
-//			log(ex);
-//			record.setResult(KinesisAnalyticsInputPreprocessingResponse.Result.ProcessingFailed);
-//			return record;
-//		}
-	}
 
 }

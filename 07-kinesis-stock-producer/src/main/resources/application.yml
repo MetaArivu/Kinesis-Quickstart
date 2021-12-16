@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: kinesis-stock-producer
+
+
+cloud:
+  aws:
+    inputstreamname: stock-data-stream
+    credentials:
+      accessKey: 
+      secretKey: 
+    region: ap-south-1
+    stack:
+      auto: false
+
