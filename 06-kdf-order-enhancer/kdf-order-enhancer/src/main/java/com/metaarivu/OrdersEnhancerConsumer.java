@@ -1,20 +1,16 @@
 package com.metaarivu;
 
-import com.amazonaws.services.lambda.runtime.LambdaLogger;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.events.KinesisAnalyticsInputPreprocessingResponse;
 import com.amazonaws.services.lambda.runtime.events.KinesisAnalyticsInputPreprocessingResponse.Record;
 import com.amazonaws.services.lambda.runtime.events.KinesisFirehoseEvent;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.metaarivu.model.Order;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.nio.ByteBuffer;
-import java.util.*;
-import java.util.stream.Collectors;
 public class OrdersEnhancerConsumer {
 
 	public KinesisAnalyticsInputPreprocessingResponse transformRecords(KinesisFirehoseEvent event, Context context) {

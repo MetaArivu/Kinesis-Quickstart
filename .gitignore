@@ -1,3 +1,5 @@
 /.metadata/
 06-kdf-order-enhancer/.aws-sam/**
 06-kdf-order-enhancer/kdf-order-enhancer/.settings/**
+06-kdf-order-enhancer/kdf-order-enhancer/target/**
+06-kdf-order-enhancer/kdf-order-enhancer/target/classes/com/metaarivu/OrdersEnhancerConsumer.class
