@@ -37,6 +37,13 @@ Amazon Kinesis makes it easy to collect, process, and analyze real-time, streami
 
 
     
- 
+ ## License  
+
+Copyright © [MetaMagic Global Inc](http://www.metamagicglobal.com/), 2021-22.  All rights reserved.
+
+Licensed under the Apache 2.0 License.
+
+**Enjoy!**
+
     
 
