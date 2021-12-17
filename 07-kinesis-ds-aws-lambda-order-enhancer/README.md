@@ -21,5 +21,5 @@ In this demo we will consume data stream data using AWS Lambda and stream data t
 ## Check AWS Lambda Log on AWS Cloud Watch
  - <img width="1385" alt="Screen Shot 2021-12-17 at 10 31 13 PM" src="https://user-images.githubusercontent.com/23295769/146580914-5090b8da-1dcc-4e1a-87c3-22901ed0a891.png">
 
-## Check S3, you will be able to 
+## Check S3, you will be able to see data which is produced on order-data-stream
 - <img width="1366" alt="Screen Shot 2021-12-17 at 10 36 13 PM" src="https://user-images.githubusercontent.com/23295769/146581567-9ee25114-a9f1-4269-b70f-a33d14e7b580.png">
