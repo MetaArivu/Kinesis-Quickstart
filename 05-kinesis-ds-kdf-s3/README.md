@@ -18,7 +18,7 @@ Data Stream -> KDF -> S3
 - Change Buffer Setting (Only For Testing Purpose Follow Below)
 <img width="799" alt="Screen Shot 2021-12-15 at 1 49 11 PM" src="https://user-images.githubusercontent.com/23295769/146149544-13b88876-ddf4-4f0b-b615-a388db728f46.png">
 
-- Finallu Click on "Create Delivery Stream"
+- Finally Click on "Create Delivery Stream"
 
 
 ## Produce Data On Stream
