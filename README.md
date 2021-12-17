@@ -12,7 +12,7 @@ Amazon Kinesis makes it easy to collect, process, and analyze real-time, streami
     - [Using Kinesis Core API](https://github.com/MetaArivu/Kinesis-Quickstart/tree/main/03-kinesis-order-producer)
 - Consuming events from Datastreams
     - [Using Spring Cloud API](https://github.com/MetaArivu/Kinesis-Quickstart/tree/main/04-kinesis-consumer)
-    - [Using Kinesis Core API](https://github.com/MetaArivu/Kinesis-Quickstart/tree/main/03-kinesis-consumer)
+    - [Using Kinesis Core API](https://github.com/MetaArivu/Kinesis-Quickstart/tree/main/04-kinesis-consumer)
 - AWS Lambda To Consumer
     - Creating Project Using SAM
     - Serverless AWS Lambda Code Walkthrough
