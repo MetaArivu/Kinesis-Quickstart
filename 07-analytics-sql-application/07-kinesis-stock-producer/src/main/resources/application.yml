@@ -2,10 +2,9 @@ spring:
   application:
     name: kinesis-stock-producer
 
-
 cloud:
   aws:
-    inputstreamname: stock-data-stream
+    inputstreamname: stock-input-stream
     credentials:
       accessKey: 
       secretKey: 

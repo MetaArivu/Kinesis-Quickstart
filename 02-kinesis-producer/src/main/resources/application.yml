@@ -16,8 +16,8 @@ spring:
 cloud:
   aws:
     credentials:
-      accessKey: KEY
-      secretKey: secretkey
+      accessKey: 
+      secretKey: 
     region:
       static: ap-south-1
     stack:
