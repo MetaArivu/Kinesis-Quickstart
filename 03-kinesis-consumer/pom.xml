@@ -3,12 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>kinesis-quickstart</artifactId>
-		<groupId>com.metaarivu</groupId>
-		<version>1.0</version>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.6.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<artifactId>02-kinesis-consumer</artifactId>
+	<artifactId>kinesis-consumer</artifactId>
 	<version>1.0</version>
 	<name>kinesisconsumer</name>
 	<description>Demo project for Spring Boot</description>
