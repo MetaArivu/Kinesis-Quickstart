@@ -7,3 +7,4 @@
 *.jar
 *.class
 03-kinesis-order-producer/src/main/resources/application.yml
+06-kinesis-ds-aws-lambda-order-consumer/.aws-sam/**
