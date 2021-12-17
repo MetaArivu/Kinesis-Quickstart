@@ -6,3 +6,4 @@
 07-kinesis-ds-aws-lambda-order-enhancer/.aws-sam/*
 *.jar
 *.class
+03-kinesis-order-producer/src/main/resources/application.yml
