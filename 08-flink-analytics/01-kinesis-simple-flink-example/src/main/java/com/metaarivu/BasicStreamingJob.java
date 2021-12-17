@@ -47,8 +47,9 @@ public class BasicStreamingJob {
 		DataStream<String> input = createSourceFromStaticConfig(env);
 
 		input.map(value -> {
-			log.info("DATACHANGED=>{}", value);
-			return value;
+			log.info("DATACHANGED1=>{}", value);
+			log.info("Stock To String = "+Stock.parse(value).toString());
+			return Stock.parse(value).toString();
 		}).addSink(createSinkFromStaticConfig());
 
 		env.execute("Flink Stock Streaming Java API Skeleton");
