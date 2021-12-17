@@ -8,11 +8,13 @@
 		<version>2.1.6.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.metaarivu</groupId>
 	<artifactId>kinesis-producer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>kinesis-producer</name>
 	<description>kinesis-producer</description>
+	
 	<properties>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Greenwich.SR1</spring-cloud.version>
