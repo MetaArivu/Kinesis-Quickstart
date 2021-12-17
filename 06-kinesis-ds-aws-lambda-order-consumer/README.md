@@ -1,6 +1,8 @@
 
 # Delivery Stream With AWS Lambda
 
+In this demo we will consume data stream data using AWS Lambda.
+
 We will using [SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html) to create AWS Lambda for Deleivery Stream 
 
 - SAM Installation, Follow this [link](
