@@ -7,7 +7,7 @@ In this demo we will use SQL Application legacy to get stream data and send new 
     - stock-input-stream
     - stock-output-stream
 
-- Start Stock Producer Application
+- [Start Stock Producer](https://github.com/MetaArivu/Kinesis-Quickstart/tree/main/08-analytics-sql-application/07-kinesis-stock-producer)
     - This will keep Producing Stock with Ramdom Price and push data to stock-input-stream
     - <img width="1680" alt="Screen Shot 2021-12-18 at 10 40 06 AM" src="https://user-images.githubusercontent.com/23295769/146629968-f206596d-4173-41f1-88eb-66288796a4f4.png">
 
@@ -35,7 +35,7 @@ In this demo we will use SQL Application legacy to get stream data and send new 
         - <img width="828" alt="Screen Shot 2021-12-18 at 10 37 22 AM" src="https://user-images.githubusercontent.com/23295769/146629875-0b09ca77-0d75-4359-80bd-3da1d3fcf232.png">
         - Click on Save
 
-- Start Stock Consumer
+- [Start Stock Consumer](https://github.com/MetaArivu/Kinesis-Quickstart/tree/main/08-analytics-sql-application/07-kinesis-stock-consumer)
     - This will consum data from stock-output-stream, data on this is produced by above SQL application
     - <img width="1675" alt="Screen Shot 2021-12-18 at 10 44 47 AM" src="https://user-images.githubusercontent.com/23295769/146630064-9fedbf59-385d-457e-b9fd-7f625a9fafed.png">
     - It will show stock price has trend as INCREASING or DECREASING
