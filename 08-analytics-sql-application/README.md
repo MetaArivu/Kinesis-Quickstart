@@ -36,7 +36,7 @@ In this demo we will use SQL Application legacy to get stream data and send new 
         - Click on Save
 
 - [Start Stock Consumer](https://github.com/MetaArivu/Kinesis-Quickstart/tree/main/08-analytics-sql-application/07-kinesis-stock-consumer)
-    - This will consum data from stock-output-stream, data on this is produced by above SQL application
+    - This will consume data from stock-output-stream, data on this is produced by above SQL application
     - <img width="1675" alt="Screen Shot 2021-12-18 at 10 44 47 AM" src="https://user-images.githubusercontent.com/23295769/146630064-9fedbf59-385d-457e-b9fd-7f625a9fafed.png">
     - It will show stock price has trend as INCREASING or DECREASING
     
