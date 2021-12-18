@@ -6,8 +6,8 @@ cloud:
   aws:
     inputstreamname: stock-input-stream
     credentials:
-      accessKey: AKIA44JJ3DZVGUAWINOP
-      secretKey: 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
+      accessKey: 
+      secretKey: 
     region: ap-south-1
     stack:
       auto: false
