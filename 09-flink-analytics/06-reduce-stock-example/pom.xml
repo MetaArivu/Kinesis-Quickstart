@@ -3,9 +3,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.metaarivu</groupId>
-	<artifactId>06-aggregation-stock-example</artifactId>
+	<artifactId>06-reduce-stock-example</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Aggregatioon Stock Example</name>
+	<name>Reduce Stock Example</name>
 	<description>SAggregatioon Stock Example</description>
 
 	<!-- Versions -->

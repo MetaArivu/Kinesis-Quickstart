@@ -7,7 +7,7 @@ import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
-public class AggregationExample {
+public class ReducerExample {
 	public static void main(String[] args) throws Exception {
 		System.out.println("Starting Stream Stock Trend Example ==>");
 		StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
