@@ -24,19 +24,18 @@ public class TwitterData {
 		System.out.println("====STARTING TWITTER DS=========");
 		final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-		Properties twitterCredentials = new Properties();
-		twitterCredentials.setProperty(TwitterSource.CONSUMER_KEY, "JTQvniDhww88cLB2EmxGG8onM");
-		twitterCredentials.setProperty(TwitterSource.CONSUMER_SECRET,
-				"y1Vr5mM0l73zppsBCTj1hbl37oClKYNOJvCcYTeoWYwbXIU5Es");
-		twitterCredentials.setProperty(TwitterSource.TOKEN, "75206984-ON58zQYgtqsyjx3gjCZtz6IgnTFDIB0Ot02n34Hic");
-		twitterCredentials.setProperty(TwitterSource.TOKEN_SECRET, "BsYG8xSSKe1uADJnXdjgEt8gPWMpuU59kFAmzL80Y0Feg");
+		Properties properties = new Properties();
+		properties.setProperty(TwitterSource.CONSUMER_KEY, "JTQvniDhww88cLB2EmxGG8onM");
+		properties.setProperty(TwitterSource.CONSUMER_SECRET,"y1Vr5mM0l73zppsBCTj1hbl37oClKYNOJvCcYTeoWYwbXIU5Es");
+		properties.setProperty(TwitterSource.TOKEN, "75206984-ON58zQYgtqsyjx3gjCZtz6IgnTFDIB0Ot02n34Hic");
+		properties.setProperty(TwitterSource.TOKEN_SECRET, "BsYG8xSSKe1uADJnXdjgEt8gPWMpuU59kFAmzL80Y0Feg");
 
-		DataStream<String> twitterData = env.addSource(new TwitterSource(twitterCredentials));
+		DataStream<String> twitterData = env.addSource(new TwitterSource(properties));
 
 
-		twitterData.flatMap(new TweetParser()).addSink(StreamingFileSink.forRowFormat(new Path(
-				"/tmp/tweet"),
-				new SimpleStringEncoder<Tuple2<String, Integer>>("UTF-8"))
+		twitterData.flatMap(new TweetParser())
+				.addSink(StreamingFileSink.forRowFormat(new Path("/tmp/tweet"),
+					new SimpleStringEncoder<Tuple2<String, Integer>>("UTF-8"))
 				.withRollingPolicy(DefaultRollingPolicy.builder().build()).build());
 
 		env.execute("Twitter Example");
