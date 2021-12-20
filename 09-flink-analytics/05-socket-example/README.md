@@ -1,7 +1,7 @@
 
-# JOIN Example Using FLINK API
+# SOCKET Example Using FLINK API
 
-In this demo we will take input from two Data Stream and Join it.
+In this demo we will take input from Stocket and Work On It.
 
 - [API](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/datastream/operators/joining/)
 - Create a jar 

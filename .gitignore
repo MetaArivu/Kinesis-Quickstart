@@ -11,3 +11,6 @@
 09-flink-analytics/01-kinesis-simple-flink-example/target/**
 09-flink-analytics/03-word-count/.settings/**
 09-flink-analytics/04-join-example/.settings/**
+**/.settings/**
+**/target/**
+
