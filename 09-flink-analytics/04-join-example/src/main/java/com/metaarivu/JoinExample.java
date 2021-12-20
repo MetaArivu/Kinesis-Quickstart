@@ -28,7 +28,7 @@ public class JoinExample {
 				return new Tuple2<String, String>(split[2], split[0] + "," + split[1]);
 			}
 		});
-		System.out.println("Employees Data==>");
+		System.out.println("\n\n Employees Data==>");
 		empData.print();
 		DataSet<String> departments = env.readTextFile(params.get("departments"));
 
@@ -42,7 +42,7 @@ public class JoinExample {
 			}
 		});
 
-		System.out.println("Department Data==>");
+		System.out.println("\n\n Department Data==>");
 		deptData.print();
 
 		DataSet<Tuple3<String, String, String>> joined = empData.join(deptData).where(0).equalTo(0).with(
@@ -55,7 +55,7 @@ public class JoinExample {
 					}
 				});
 
-		System.out.println("Employee & Department Data==>");
+		System.out.println("\n\n Employee & Department Data==>");
 
 		joined.print();
 
