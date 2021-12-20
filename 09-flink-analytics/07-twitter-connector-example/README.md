@@ -2,6 +2,9 @@
 
 In this demo we will using Twitter Datasourcee connector and get tweets where user language as EN.
 
+## Predefined Connectors
+- https://nightlies.apache.org/flink/flink-docs-master/docs/connectors/datastream/overview/
+
 ## Steps
 - Execute Jar using below command
 ```
