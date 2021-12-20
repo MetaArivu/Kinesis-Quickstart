@@ -16,7 +16,8 @@ public class ReducerExample {
 				.map(new StockSplitter());
 
 		SingleOutputStreamOperator<Tuple5<String, String, String, Double, Double>> stockReduced = stocks
-				.keyBy(v -> v.f1).reduce(new StockReducer());
+				.keyBy(v -> v.f1)
+				.reduce(new StockReducer());
 
 		stockReduced.print();
 
