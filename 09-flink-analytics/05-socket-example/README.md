@@ -3,10 +3,20 @@
 
 In this demo we will take input from Stocket and Work On It.
 
-- [API](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/datastream/operators/joining/)
-- Create a jar 
-- Run jar using below command
+- Start socket using below command
 ```
-./bin/flink run ~/workspace_learning/kinesis-quickstart/09-flink-analytics/04-join-example/join.jar --employees /Users/ketangote/workspace_learning/kinesis-quickstart/09-flink-analytics/04-join-example/src/main/resources/employees.txt --departments /Users/ketangote/workspace_learning/kinesis-quickstart/09-flink-analytics/04-join-example/src/main/resources/departments.txt 
+nc -lk 9999
 ```
-- <img width="646" alt="Screen Shot 2021-12-20 at 11 05 53 AM" src="https://user-images.githubusercontent.com/23295769/146716933-cae115b0-624c-4e32-aec7-1afec5e15a77.png">
+- Execute Jar using below command
+```
+./bin/flink run ~/workspace_learning/kinesis-quickstart/09-flink-analytics/05-socket-example/socket-example.jar
+```
+- Enter Some Data as below on Socket which we started in step1
+```
+John
+Jane
+Jack
+John
+```
+- Check Flink Dashboard Logs
+- <img width="1677" alt="Screen Shot 2021-12-20 at 12 00 01 PM" src="https://user-images.githubusercontent.com/23295769/146722032-a268104c-b378-4ac2-8dd8-7243533d20da.png">
