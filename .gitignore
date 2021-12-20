@@ -8,3 +8,5 @@
 *.class
 03-kinesis-order-producer/src/main/resources/application.yml
 06-kinesis-ds-aws-lambda-order-consumer/.aws-sam/**
+09-flink-analytics/01-kinesis-simple-flink-example/target/**
+09-flink-analytics/03-word-count/.settings/**
