@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.metaarivu</groupId>
-	<artifactId>03-word-count</artifactId>
+	<artifactId>04-join-example</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>word count</name>
-	<description>word count example</description>
+	<name>Join Example</name>
+	<description>Join Example</description>
 
 	<!-- Versions -->
 	<properties>
