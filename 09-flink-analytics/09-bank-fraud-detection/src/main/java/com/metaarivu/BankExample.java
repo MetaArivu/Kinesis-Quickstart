@@ -73,38 +73,40 @@ public class BankExample {
 		BroadcastStream<LostCard> lostCardBroadcast = lostCards.broadcast(lostCardStateDescriptor);
 
 		// transaction data keyed by customer_id
-		DataStream<Tuple2<String, String>> data = env.socketTextStream("localhost", 9996)
+		DataStream<Tuple2<String, String>> ccTransactions = env.socketTextStream("localhost", 9996)
 				.map(new MapFunction<String, Tuple2<String, String>>() {
 					public Tuple2<String, String> map(String value) {
-						String[] words = value.split(",");
-						return new Tuple2<String, String>(words[3], value);  
+						String[] txRecord = value.split(",");
+						return new Tuple2<String, String>(txRecord[3], value);  
 					}
 				});
 
 		// (1) Check against alarmed customers
-		DataStream<Tuple2<String, String>> alarmedCustTransactions = data
+		DataStream<Tuple2<String, String>> alarmedCustTransactions = ccTransactions
 				.keyBy(t -> t.f0)
 				.connect(alarmedCustBroadcast)
 				.process(new AlarmedCustCheck());
 
 		// (2) Check against lost cards
-		DataStream<Tuple2<String, String>> lostCardTransactions = data
+		DataStream<Tuple2<String, String>> lostCardTransactions = ccTransactions
 				.keyBy(t -> t.f0)
 				.connect(lostCardBroadcast)
 				.process(new LostCardCheck());
 
 		// (3) More than 10 transactions check
-		DataStream<Tuple2<String, String>> excessiveTransactions = data
+		DataStream<Tuple2<String, String>> excessiveTransactions = ccTransactions
 				.map(new MapFunction<Tuple2<String, String>, Tuple3<String, String, Integer>>() {
 					public Tuple3<String, String, Integer> map(Tuple2<String, String> value) {
 						return new Tuple3<String, String, Integer>(value.f0, value.f1, 1);
 					}
 				})
 				.keyBy(t -> t.f0)
-				.window(TumblingProcessingTimeWindows.of(Time.seconds(10))).sum(2)
+				.window(TumblingProcessingTimeWindows.of(Time.seconds(10)))
+				.sum(2)
 				.flatMap(new FilterAndMapMoreThan10());
 
-		DataStream<Tuple2<String, String>> freqCityChangeTransactions = data
+		// (4) Same Card used more than 1 cities at same time
+		DataStream<Tuple2<String, String>> freqCityChangeTransactions = ccTransactions
 				.keyBy(new KeySelector<Tuple2<String, String>, String>() {
 					public String getKey(Tuple2<String, String> value) {
 						return value.f0;
@@ -113,12 +115,15 @@ public class BankExample {
 				.window(TumblingProcessingTimeWindows.of(Time.seconds(10)))
 				.process(new Citychange());
 
+		// All flagged transaction from 1,2,3,4 are combined
 		DataStream<Tuple2<String, String>> flaggedTxn = alarmedCustTransactions
 				.union(lostCardTransactions,excessiveTransactions, freqCityChangeTransactions);
 
-		flaggedTxn.addSink(StreamingFileSink.forRowFormat(new Path(path+"flagged_transaction"),new SimpleStringEncoder<Tuple2<String, String>>("UTF-8"))
+		flaggedTxn
+				.addSink(StreamingFileSink.forRowFormat(new Path(path+"flagged_transaction"),new SimpleStringEncoder<Tuple2<String, String>>("UTF-8"))
 				.withRollingPolicy(DefaultRollingPolicy.builder().build())
 				.build());
+		
 		// execute program
 		env.execute("Streaming Bank");
 	}

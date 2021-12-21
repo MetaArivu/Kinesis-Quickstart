@@ -26,7 +26,7 @@ public class BankDataServer {
 				try {
 					PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 					String line;
-					Thread.sleep(3000);
+					Thread.sleep(30000);
 
 					while ((line = br.readLine()) != null) {
 						out.println(line);
