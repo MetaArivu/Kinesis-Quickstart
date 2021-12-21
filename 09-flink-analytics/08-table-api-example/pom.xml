@@ -61,7 +61,7 @@
           <!-- MainClass in mainfest make a executable jar -->
           <archive>
             <manifest>
-              <mainClass>com.metaarivu.TableAPIExample</mainClass>
+              <mainClass>com.metaarivu.TableAPIExample3</mainClass>
             </manifest>
           </archive>
 

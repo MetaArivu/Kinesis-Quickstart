@@ -8,16 +8,16 @@ import org.apache.flink.table.api.Table;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 import org.apache.flink.types.Row;
 
-public class TableAPIExample {
+public class TableAPIExample1 {
 
-	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws Exception {
 
-		System.out.println("Starting Table API Examples ==>");
+		System.out.println("Starting Table API Examples1 ==>");
 
 		StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-		DataStream<Tuple5<String, String, String, Double, Double>> stocks = env.socketTextStream("localhost", 9991)
+		DataStream<Tuple5<String, String, String, Double, Double>> stocks = env
+				.socketTextStream("localhost", 9991)
 				.map(new StockSplitter());
 
 		StreamTableEnvironment tableEnv = StreamTableEnvironment.create(env);
@@ -39,8 +39,7 @@ public class TableAPIExample {
 	}
 
 	public static class StockSplitter implements MapFunction<String, Tuple5<String, String, String, Double, Double>> {
-		public Tuple5<String, String, String, Double, Double> map(String value) // 1,HDFC,BANKING,1450
-		{
+		public Tuple5<String, String, String, Double, Double> map(String value) {
 			String[] stock = value.split(","); // words = [{1},{HDFC},{BANKING},{1450}
 			return new Tuple5<String, String, String, Double, Double>(stock[0], stock[1], stock[2],
 					Double.valueOf(stock[3]), 0d);
