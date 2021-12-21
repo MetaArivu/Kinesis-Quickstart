@@ -8,56 +8,62 @@ import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.tuple.Tuple3;
 import org.apache.flink.api.java.utils.ParameterTool;
 
+
 public class JoinExample {
 	public static void main(String[] args) throws Exception {
-		System.out.println("STARTING JOIN JOB==>");
+		System.out.println("STARTING JOIN JOB V2==>");
 		ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
 		ParameterTool params = ParameterTool.fromArgs(args);
 
 		env.getConfig().setGlobalJobParameters(params);
 
-		DataSet<String> employees = env.readTextFile(params.get("employees"));
+		DataSet<String> orders = env.readTextFile(params.get("orders"));
 
-		DataSet<Tuple2<String, String>> empData = employees.map(new MapFunction<String, Tuple2<String, String>>() {
-
-			@Override
-			public Tuple2<String, String> map(String value) throws Exception {
-				String split[] = value.split(",");
-
-				return new Tuple2<String, String>(split[2], split[0] + "," + split[1]);
-			}
-		});
-		System.out.println("\n\n Employees Data==>");
-		empData.print();
-		DataSet<String> departments = env.readTextFile(params.get("departments"));
-
-		DataSet<Tuple2<String, String>> deptData = departments.map(new MapFunction<String, Tuple2<String, String>>() {
+		DataSet<Tuple2<String, Order>> orderData = orders.map(new MapFunction<String, Tuple2<String, Order>>() {
 
 			@Override
-			public Tuple2<String, String> map(String value) throws Exception {
-				String split[] = value.split(",");
+			public Tuple2<String, Order> map(String value) throws Exception {
+				//String split[] = value.split(",");
+				Order order = new Order(value);
+				return new Tuple2<String, Order>(order.getPrdId(),order);
+			}
+		});
+		System.out.println("====ORDER DATA=====");
+		orderData.print();
+		DataSet<String> products = env.readTextFile(params.get("products"));
 
-				return new Tuple2<String, String>(split[0], split[1]);
+		DataSet<Tuple2<String, Product>> productData = products.map(new MapFunction<String, Tuple2<String, Product>>() {
+
+			@Override
+			public Tuple2<String, Product> map(String value) throws Exception {
+				//String split[] = value.split(",");
+				Product product = new Product(value);
+
+				return new Tuple2<String, Product>(product.getPrdId(),product);
 			}
 		});
 
-		System.out.println("\n\n Department Data==>");
-		deptData.print();
+		System.out.println("====PRODUCT DATA=====");
 
-		DataSet<Tuple3<String, String, String>> joined = empData.join(deptData).where(0).equalTo(0).with(
-				new JoinFunction<Tuple2<String, String>, Tuple2<String, String>, Tuple3<String, String, String>>() {
+		productData.print();
+
+		DataSet<Tuple2<String, Order>> joined = orderData.join(productData).where(0).equalTo(0).with(
+				new JoinFunction<Tuple2<String, Order>, Tuple2<String, Product>, Tuple2<String,Order>>() {
 
 					@Override
-					public Tuple3<String, String, String> join(Tuple2<String, String> emp, Tuple2<String, String> dept)
+					public Tuple2<String,Order> join(Tuple2<String, Order> ord, Tuple2<String, Product> prd)
 							throws Exception {
-						return new Tuple3<String, String, String>(emp.f1, emp.f0, dept.f1);
+						Order order = ord.f1;
+						Product prod = prd.f1;
+						return new Tuple2<String, Order>(ord.f1.getOrdId(), new Order(order.getOrdId(), order.getPrdId(), order.getQty(), prod.getPrdName(), prod.getUnitPrice()));
 					}
 				});
 
-		System.out.println("\n\n Employee & Department Data==>");
 
 		joined.print();
+		
+		//env.execute("Join order and product example");
 
 	}
 

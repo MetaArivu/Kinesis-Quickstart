@@ -1,0 +1,2 @@
+pd1,Iphone6,23000
+pd2,Iphone8,43000
